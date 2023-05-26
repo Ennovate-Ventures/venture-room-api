@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('investors', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constained();
+            $table->text('income_source');
+            $table->string('name');
             $table->timestamps();
         });
     }

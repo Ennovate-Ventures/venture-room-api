@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('startups', function (Blueprint $table) {
+        Schema::create('investments', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->integer('employee_count')->default(0);
-            $table->float('revenue', 30, 2)->default(0.00);
-            $table->boolean('approved')->default(false);
+            $table->foreignId('startup_id')->constrained();
+            $table->foreignId('investor_id')->constained();
+            $table->float('amount',30,2);
+            $table->boolean('confirmed')->default(false);
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('startups');
+        Schema::dropIfExists('investments');
     }
 };
