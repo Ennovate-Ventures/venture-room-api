@@ -19,27 +19,27 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('v1')->group(function () {
+Route::prefix('v1')->group(function () {
 
-    Route::middleware('startups')->group(function () {
+    Route::prefix('startup')->group(function () {
         Route::get('/',[StartupController::class, 'index']);
-        Route::get('create',[StartupController::class, 'store']);
-        Route::get('update',[StartupController::class, 'update']);
-        Route::get('delete',[StartupController::class, 'delete']);
+        Route::post('create',[StartupController::class, 'store']);
+        Route::post('update',[StartupController::class, 'update']);
+        Route::post('delete',[StartupController::class, 'delete']);
     });
 
-    Route::middleware('investor')->group(function () {
+    Route::prefix('investor')->group(function () {
         Route::get('/',[StartupController::class, 'index']);
-        Route::get('create',[StartupController::class, 'store']);
-        Route::get('update',[StartupController::class, 'update']);
-        Route::get('delete',[StartupController::class, 'delete']);
+        Route::post('create',[StartupController::class, 'store']);
+        Route::post('update',[StartupController::class, 'update']);
+        Route::post('delete',[StartupController::class, 'delete']);
     });
 
-    Route::middleware('founder')->group(function () {
+    Route::prefix('founder')->group(function () {
         Route::get('/',[StartupController::class, 'index']);
-        Route::get('create',[StartupController::class, 'store']);
-        Route::get('update',[StartupController::class, 'update']);
-        Route::get('delete',[StartupController::class, 'delete']);
+        Route::post('create',[StartupController::class, 'store']);
+        Route::post('update',[StartupController::class, 'update']);
+        Route::post('delete',[StartupController::class, 'delete']);
     });
 
   

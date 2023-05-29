@@ -8,7 +8,8 @@ use App\Models\Startup;
 class StartupController extends Controller
 {
     public function index(){
-        return Startup::get();
+        return Startup::withCount('investors')->get();
+
     }
 
     public function store(Request $request){

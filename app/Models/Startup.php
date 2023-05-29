@@ -18,5 +18,13 @@ class Startup extends Model
     public function founders(){
         return $this->hasMany(Founder::class);
     }
+
+    public function investors(){
+        return $this->belongsToMany(Investor::class,'investments', 'startup_id', 'investor_id');
+    }
+
+    public function goal(){
+        
+    }
 }
 
