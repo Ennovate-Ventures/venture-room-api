@@ -17,6 +17,7 @@ return new class extends Migration
             $table->float('amount', 30, 2);
             $table->string('funder');
             $table->string('date');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

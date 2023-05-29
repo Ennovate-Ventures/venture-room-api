@@ -19,6 +19,8 @@ return new class extends Migration
             $table->date('date_of_birth');
             $table->text('description');
             $table->string('link')->nullable();
+            $table->string('image')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

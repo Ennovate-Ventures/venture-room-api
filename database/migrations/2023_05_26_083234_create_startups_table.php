@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('startups', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->integer('employee_count')->default(0);
             $table->float('revenue', 30, 2)->default(0.00);
             $table->boolean('approved')->default(false);
+            $table->string('image')->nullable();
+            $table->foreignId('user_id')->constained();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

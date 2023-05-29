@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('investor_id')->constained();
             $table->float('amount',30,2);
             $table->boolean('confirmed')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

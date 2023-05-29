@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('investors', function (Blueprint $table) {
+        Schema::create('favorite_startups', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constained();
-            $table->text('income_source');
-            $table->string('name');
-            $table->string('image')->nullable();
+            $table->foreignId('startup_id')->constrained();
+            $table->foreignId('investor_id')->constrained();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('investors');
+        Schema::dropIfExists('favorite_startups');
     }
 };
