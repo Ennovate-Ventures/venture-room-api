@@ -11,6 +11,6 @@ class Goal extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'startup_id', 'amount', 'achieved', 'goal_title', 'goal_description'
+        'startup_id', 'amount', 'achieved', 'goal_title', 'goal_description', 'min_amount'
     ];
 }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->boolean('achieved')->default(false);
             $table->string('goal_title')->nullable();
             $table->string('goal_description')->nullable();
+            $table->float('min_amount',30,2);
             $table->softDeletes();
             $table->timestamps();
         });
