@@ -26,8 +26,16 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout($id){
-        $u = User::find($id);
+    public function getUser(Request $request){
+        $user = User::where('id', $request->user()->id)->with([
+            'startup'
+        ])->first();
+
+        return $user;
+    }
+
+    public function logout(Request $request){
+        $u =  User::where('id', $request->user()->id)->first();
         $u->tokens()->delete();
         return response()->json('Logout complete', 200);
     }
