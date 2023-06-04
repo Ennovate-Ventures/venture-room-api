@@ -39,5 +39,32 @@ class StartupSeeder extends Seeder
             'approved' => true, 
             'user_id' => 3
         ]);
+
+        Startup::create([
+            'name' => 'Waystar Royco', 
+            'description' => 'It is an online cruise and media startup', 
+            'employee_count' => 5,
+            'revenue' => 10000.00, 
+            'approved' => true, 
+            'user_id' => 1
+        ]);
+
+        Startup::create([
+            'name' => 'Valter', 
+            'description' => 'It is an media startup', 
+            'employee_count' => 5,
+            'revenue' => 10000.00, 
+            'approved' => true, 
+            'user_id' => 2
+        ]);
+
+        Startup::create([
+            'name' => 'Pied Piper', 
+            'description' => 'It is a startup', 
+            'employee_count' => 5,
+            'revenue' => 10000.00, 
+            'approved' => true, 
+            'user_id' => 3
+        ]);
     }
 }

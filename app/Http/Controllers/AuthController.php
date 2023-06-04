@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -20,6 +21,29 @@ class AuthController extends Controller
            return response()->json('The provided credentials are incorrect.', 400);
         }
      
+        return response()->json([
+            'user' => $user,
+            'token' => $user->createToken('1234')->plainTextToken
+        ]);
+    }
+
+    public function register(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'password' => 'required',
+            'email' => 'required'
+        ]);
+ 
+        if ($validator->fails()) {
+            return response()->json('Error',400);
+        }
+
+        $user = User::create([
+            'username' => $request->name,
+            'password' => Hash::create($request->password),
+            'role' => 1
+        ]);
+
         return response()->json([
             'user' => $user,
             'token' => $user->createToken('1234')->plainTextToken
