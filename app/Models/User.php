@@ -43,7 +43,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function startup(){
-        return $this->hasOne(Startup::class);
+    public function startups(){
+        return $this->hasMany(Startup::class);
     }
 }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Startup;
+use App\Models\{
+    Startup, User
+};
 
 class StartupController extends Controller
 {
@@ -13,6 +15,11 @@ class StartupController extends Controller
         ])->get();
     }
 
+    public function getFounderStartups(Request $request){
+        $user = User::where('id', $request->user()->id)->with('startups')->first();
+        return $user->startups;
+    }
+
     public function store(Request $request){
 
             Startup::create([
@@ -20,6 +27,7 @@ class StartupController extends Controller
                 'description' => $request->description, 
                 'employee_count' => $request->employee_count,
                 'revenue' => $request->revenue, 
+                'user_id' => $request->user()->id
             ]);
 
             return response()->json('Starup created', 200);
