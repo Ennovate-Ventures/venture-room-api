@@ -52,6 +52,7 @@ Route::prefix('v1')->group(function () {
 
     Route::prefix('startup')->group(function () {
         Route::get('/',[StartupController::class, 'index']);
+        Route::get('{id}',[StartupController::class, 'getStartup']);
     });
 
     Route::prefix('investor')->group(function () {

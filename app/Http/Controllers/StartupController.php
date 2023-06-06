@@ -20,6 +20,13 @@ class StartupController extends Controller
         return $user->startups;
     }
 
+    public function getStartup($id){
+        return Startup::where('id', $id)->withCount(['investors'])
+                        ->with([
+                            'goals'
+                        ])->first();
+    }
+
     public function store(Request $request){
 
             Startup::create([
@@ -33,9 +40,9 @@ class StartupController extends Controller
             return response()->json('Starup created', 200);
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request){
 
-        $s = Startup::find($id);
+        $s = Startup::where('id',$request->id)->first();
 
         $s->update([
             'name' => $request->name, 
