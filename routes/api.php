@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     StartupController, AuthController, InvestorController,
-    FounderController
+    FounderController, MailController
 };
 
 /*
@@ -19,6 +19,8 @@ use App\Http\Controllers\{
 */
 
 Route::prefix('v1')->group(function () {
+
+    Route::get('mailtest',[MailController::class, 'mailTest']);
 
     Route::middleware('auth:sanctum')->get('/user',[AuthController::class,'getUser']);
 

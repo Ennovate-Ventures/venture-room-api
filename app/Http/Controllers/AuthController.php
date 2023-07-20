@@ -45,6 +45,9 @@ class AuthController extends Controller
             'role' => 1
         ]);
 
+        $mailController = new MailController();
+        $mailController->welcomeRegisteredUser(null, $user->email);
+
         return response()->json([
             'user' => $user,
             'token' => $user->createToken('1234')->plainTextToken

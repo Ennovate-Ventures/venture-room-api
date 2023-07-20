@@ -29,12 +29,16 @@ class StartupController extends Controller
 
     public function store(Request $request){
 
+        dd($request->user());
+
+        return
+
             Startup::create([
                 'name' => $request->name, 
                 'description' => $request->description, 
                 'employee_count' => $request->employee_count,
                 'revenue' => $request->revenue, 
-                'user_id' => $request->user()->id
+                'user_id' => 5
             ]);
 
             return response()->json('Starup created', 200);
