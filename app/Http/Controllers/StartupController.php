@@ -28,11 +28,6 @@ class StartupController extends Controller
     }
 
     public function store(Request $request){
-
-        dd($request->user());
-
-        return
-
             Startup::create([
                 'name' => $request->name, 
                 'description' => $request->description, 

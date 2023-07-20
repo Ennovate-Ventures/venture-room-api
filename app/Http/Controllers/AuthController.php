@@ -55,10 +55,7 @@ class AuthController extends Controller
     }
 
     public function getUser(Request $request){
-        $user = User::where('id', $request->user()->id)->with([
-            'startup'
-        ])->first();
-
+        $user = User::where('id', $request->user()->id)->first();
         return $user;
     }
 
