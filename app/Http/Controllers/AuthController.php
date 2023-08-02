@@ -45,8 +45,8 @@ class AuthController extends Controller
             'role' => 1
         ]);
 
-        $mailController = new MailController();
-        $mailController->welcomeRegisteredUser(null, $user->email);
+        // $mailController = new MailController();
+        // $mailController->welcomeRegisteredUser(null, $user->email);
 
         return response()->json([
             'user' => $user,

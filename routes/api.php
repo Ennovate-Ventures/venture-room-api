@@ -31,6 +31,7 @@ Route::prefix('v1')->group(function () {
     });
 
     Route::middleware('auth:sanctum')->group(function () {
+        
         Route::prefix('startup')->group(function () {
             Route::post('getFounderStartups',[StartupController::class, 'getFounderStartups']);
             Route::post('create',[StartupController::class, 'store']);

@@ -33,7 +33,7 @@ class StartupController extends Controller
                 'description' => $request->description, 
                 'employee_count' => $request->employee_count,
                 'revenue' => $request->revenue, 
-                'user_id' => 5
+                'user_id' => $request->user()->id
             ]);
 
             return response()->json('Starup created', 200);
