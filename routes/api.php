@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     StartupController, AuthController, InvestorController,
-    FounderController, MailController
+    FounderController, MailController,ImageController
 };
 
 /*
@@ -22,6 +22,8 @@ Route::prefix('v1')->group(function () {
 
     Route::get('mailtest',[MailController::class, 'mailTest']);
 
+    Route::post('/image/upload',[ImageController::class, 'index']);
+
     Route::middleware('auth:sanctum')->get('/user',[AuthController::class,'getUser']);
 
     Route::prefix('auth')->group(function () {
@@ -31,7 +33,7 @@ Route::prefix('v1')->group(function () {
     });
 
     Route::middleware('auth:sanctum')->group(function () {
-        
+
         Route::prefix('startup')->group(function () {
             Route::post('getFounderStartups',[StartupController::class, 'getFounderStartups']);
             Route::post('create',[StartupController::class, 'store']);
