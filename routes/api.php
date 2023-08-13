@@ -39,6 +39,7 @@ Route::prefix('v1')->group(function () {
             Route::post('create',[StartupController::class, 'store']);
             Route::post('update',[StartupController::class, 'update']);
             Route::post('delete',[StartupController::class, 'delete']);
+            Route::post('info',[StartupController::class, 'information']);
         });
 
         Route::prefix('investor')->group(function () {

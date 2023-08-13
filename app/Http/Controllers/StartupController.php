@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Validator;
 
 class StartupController extends Controller
 {
+    public function information(Request $request){
+        $user = User::where('id', $request->user()->id)->withCount('startups')->first();
+        return response()->json([
+            'startup_count' => $user->startups_count
+        ], 200);
+    }
+    
     public function index()
     {
         return Startup::withCount(['investors'])->with([
